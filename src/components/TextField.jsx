@@ -1,9 +1,11 @@
-import cn from 'classnames';
-import React, { useState } from 'react';
 import './text.css';
 
+import React, { useState } from 'react';
+
+import cn from 'classnames';
+
 /**
- * placeholder 설정 - 테스트 작성 완료
+ * placeholder 설정
  * className에 따른 css class 설정 - 테스트 작성 완료
  * 텍스트를 입력할 때마다 onChange 핸들러 호출
  * focus 시 border 스타일 변경
