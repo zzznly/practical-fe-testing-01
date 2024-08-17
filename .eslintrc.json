@@ -25,15 +25,15 @@
     "no-unused-vars": "warn",
     "react/prop-types": "off",
     "import/order": [
-      "warn",
-      {
-        "groups": ["builtin", "external", ["parent", "sibling"], "index"],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "newlines-between": "always"
-      }
+      "warn"
+      // {
+      //   "groups": ["builtin", "external", ["parent", "sibling"], "index"],
+      //   "alphabetize": {
+      //     "order": "asc",
+      //     "caseInsensitive": true
+      //   },
+      //   "newlines-between": "always"
+      // }
     ]
   },
   "globals": {
