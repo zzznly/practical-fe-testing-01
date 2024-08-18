@@ -3,19 +3,6 @@ import TextField from '@/components/TextField';
 import render from '@/utils/test/render';
 import { screen } from '@testing-library/react';
 
-// beforeEach(() => {
-//   console.log('root - beforeEach');
-// });
-// beforeAll(() => {
-//   console.log('root - beforeAll');
-// });
-// afterEach(() => {
-//   console.log('root - afterEach');
-// });
-// afterAll(() => {
-//   console.log('root - afterAll');
-// });
-
 it('className prop으로 설정한 css class가 적용된다.', async () => {
   // ** Arrange - 테스트를 위한 환경 만들기
   // => className을 지닌 컴포넌트 렌더링

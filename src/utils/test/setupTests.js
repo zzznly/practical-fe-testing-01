@@ -1,4 +1,6 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom'; // DOM과 관련한 Matcher 단언 기능을 제공 (ex. 요소가 DOM에 있는지, ...)
+
+// 모킹한 모듈의 히스토리 초기화
 
 afterEach(() => {
   vi.clearAllMocks();
