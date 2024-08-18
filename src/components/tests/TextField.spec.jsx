@@ -3,6 +3,19 @@ import TextField from '@/components/TextField';
 import render from '@/utils/test/render';
 import { screen } from '@testing-library/react';
 
+// beforeEach(() => {
+//   console.log('root - beforeEach');
+// });
+// beforeAll(() => {
+//   console.log('root - beforeAll');
+// });
+// afterEach(() => {
+//   console.log('root - afterEach');
+// });
+// afterAll(() => {
+//   console.log('root - afterAll');
+// });
+
 it('className prop으로 설정한 css class가 적용된다.', async () => {
   // ** Arrange - 테스트를 위한 환경 만들기
   // => className을 지닌 컴포넌트 렌더링
@@ -28,6 +41,9 @@ it('className prop으로 설정한 css class가 적용된다.', async () => {
 });
 
 describe('placeholder', () => {
+  // beforeEach(() => {
+  //   console.log('placeholder - beforeEach');
+  // });
   it('기본 placeholder "텍스트를 입력해 주세요." 가 노출된다.', async () => {
     // Arrange
     await render(<TextField />);
@@ -47,5 +63,28 @@ describe('placeholder', () => {
     const textInput = screen.getByPlaceholderText('상품명을 입력해 주세요.');
 
     expect(textInput).toBeInTheDocument();
+  });
+
+  it('텍스트를 입력하면 onChange prop으로 등록한 함수가 호출된다.', async () => {
+    // ** 스파이 함수 - 테스트 코드에서 특정 함수가 호출되었는지, 함수의 인자로 어떤 것이 넘어왔는지, 어떤 값을 반환하는지 확인하기위해 사용
+    const spy = vi.fn();
+
+    const { user } = await render(<TextField onChange={spy} />);
+
+    const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+    await user.type(textInput, 'test');
+
+    expect(spy).toHaveBeenCalledWith('test'); // spy 함수가 의도한대로 'test'라는 인자로 호출되었는지 검증
+  });
+
+  it('엔터 키를 입력하면 onEnter prop으로 등록한 함수가 호출된다.', async () => {
+    const spy = vi.fn();
+    const { user } = await render(<TextField onEnter={spy} />);
+    const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+    await user.type(textInput, 'test{Enter}');
+
+    expect(spy).toHaveBeenCalledWith('test');
   });
 });
