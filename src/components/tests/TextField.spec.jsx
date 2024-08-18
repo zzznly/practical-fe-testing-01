@@ -87,4 +87,31 @@ describe('placeholder', () => {
 
     expect(spy).toHaveBeenCalledWith('test');
   });
+
+  it('focus가 활성화되면 onFocus prop으로 등록한 함수가 호출된다.', async () => {
+    // focus 활성화되는 케이스들:
+    // 1. 탭 키로 인풋 요소로 포커스 이동
+    // 2. 인풋 요소 클릭했을때 <- 가장 보편적!
+    // 3. textInput.focus()로 직접 발생
+
+    const spy = vi.fn();
+    const { user } = await render(<TextField onFocus={spy} />);
+    const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+    await user.click(textInput);
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('focus가 활성화되면 border 스타일이 추가된다.', async () => {
+    const { user } = await render(<TextField />);
+    const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+    await user.click(textInput);
+
+    expect(textInput).toHaveStyle({
+      borderWidth: 2,
+      borderColor: 'rgb(25, 118, 210)',
+    });
+  });
 });
