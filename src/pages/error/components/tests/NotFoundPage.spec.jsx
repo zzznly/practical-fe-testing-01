@@ -14,7 +14,12 @@ vi.mock('react-router-dom', async () => {
 it('Home으로 이동 버튼 클릭시 홈 경로로 이동하는 navigate가 실행된다', async () => {
   const { user } = render(<NotFoundPage />);
 
+<<<<<<< Updated upstream
   await user.click(screen.getByText('Home으로 이동'));
+=======
+  const button = await screen.getByRole('button', { name: 'Home으로 이동' });
+  await user.click(button);
+>>>>>>> Stashed changes
 
   expect(navigateFn).toHaveBeenNthCalledWith(1, '/', { replace: true });
 });
